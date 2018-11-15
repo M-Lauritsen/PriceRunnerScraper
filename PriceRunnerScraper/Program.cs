@@ -12,13 +12,10 @@ namespace PriceRunnerScraper
     {
         static void Main(string[] args)
         {
-            while (true)
-            {
-                Console.WriteLine("Hvad vil du søge efter på PriceRunner?");
-                GetHTMLAsync();
-                
-            }
-            
+            Console.WriteLine("Hvad vil du søge efter på PriceRunner?");
+            GetHTMLAsync();
+            Console.ReadKey();
+
         }
 
         private static async void GetHTMLAsync()
@@ -54,6 +51,11 @@ namespace PriceRunnerScraper
                 Console.WriteLine(product.Descendants("h3")
                     .Where(node => node.GetAttributeValue("class", "")
                     .Equals("_2toT0OEaJp _4lEE4_tUxu _3D5OyasTJT _1wgy7yB_H3")).FirstOrDefault().InnerText.Trim('\r', '\n', '\t'));
+
+                // Product info
+                Console.WriteLine(product.Descendants("p")
+                    .Where(node => node.GetAttributeValue("class", "")
+                    .Equals("_2k9_q2p_9L _1-53aS_lww tBxFeb0uqB")).FirstOrDefault().InnerText.Trim('\r','\n','\t'));
 
                 // The Price
                 Console.WriteLine(product.Descendants("span")
