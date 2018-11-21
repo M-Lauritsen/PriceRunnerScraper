@@ -37,7 +37,7 @@ namespace PriceRunnerScraper
                 var HtmlDocument = new HtmlDocument();
                 HtmlDocument.LoadHtml(html);
 
-
+                // Pin Picking the info the elements i want to "extract"
                 var ProductList = HtmlDocument.DocumentNode.Descendants("ol")
                     .Where(node => node.GetAttributeValue("class", "")
                     .Equals("_3s8cb94L7l")).ToList();
